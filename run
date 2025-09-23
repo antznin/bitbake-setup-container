@@ -30,4 +30,4 @@ fi
 $CONTAINERCMD run \
   "${args[@]}" \
   "$@" \
-  github.com/antznin/bitbake-setup:latest
+  ghcr.io/antznin/bitbake-setup:latest
