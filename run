@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 CONTAINERCMD="${CONTAINERCMD:-podman}"
+CONTAINERURI="${CONTAINERURI:-ghcr.io/antznin/bitbake-setup:latest}"
 
 declare -a args=(
   --rm
@@ -28,4 +29,4 @@ fi
 $CONTAINERCMD run \
   "${args[@]}" \
   "$@" \
-  ghcr.io/antznin/bitbake-setup:latest
+  "$CONTAINERURI"
