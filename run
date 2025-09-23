@@ -10,8 +10,6 @@ declare -a args=(
   --device /dev/kvm
   --device /dev/net/tun
   --device /dev/vhost-net
-  --volume "$PWD":"$PWD"
-  --workdir "$PWD"
 )
 
 if [ "$CONTAINERCMD" = "podman" ]; then
