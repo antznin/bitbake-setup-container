@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+export PATH="$PATH:$HOME/.local/bin"
+
+direnv allow . 2>/dev/null || true
+
+zsh --interactive

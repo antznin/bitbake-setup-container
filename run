@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+CONTAINERCMD="${CONTAINERCMD:-podman}"
+
+declare -a args=(
+  --rm
+  --interactive
+  --tty
+  --userns=keep-id:uid="$(id -u)",gid="$(id -g)"
+  --device /dev/kvm
+  --device /dev/net/tun
+  --device /dev/vhost-net
+  --volume "$PWD":"$PWD"
+  --workdir "$PWD"
+)
+
+if [ "$CONTAINERCMD" = "podman" ]; then
+  args+=(
+    --security-opt seccomp=unconfined
+    --security-opt label=disable
+    --cap-add=NET_ADMIN
+    --cap-add=NET_RAW
+    --pids-limit=0
+  )
+elif [ "$CONTAINERCMD" != "docker" ]; then
+  echo "CONTAINERCMD unknown: $CONTAINERCMD"
+  exit 1
+fi
+
+$CONTAINERCMD run \
+  "${args[@]}" \
+  "$@" \
+  github.com/antznin/bitbake-setup:latest
