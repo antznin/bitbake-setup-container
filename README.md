@@ -15,11 +15,32 @@ initializing builds with [`bitbake-setup`](https://git.openembedded.org/bitbake)
 Start the container:
 
 ```shell
-./run
+$ ./run
 ```
 
-The `run` script can take extra arguments, which are passed to the script
-starting the container.
+The `run` script can take extra arguments, which are passed to the container
+command. For example, to pass the current working directory as a volume:
+
+```shell
+$ ./run --volume "$PWD":"$PWD" --workdir "$PWD"
+```
+
+> [!TIP]
+> The default container engine can be changes by exporting the `CONTAINERCMD`
+> variable:
+>
+> ```shell
+> export CONTAINERCMD=docker
+> ```
+>
+> The default is to use Podman.
+
+`bitbake-setup` will be part of the `$PATH`, meaning you can run `bitbake-setup`
+directly from the container:
+
+```shell
+$ bitbake-setup init
+```
 
 ## Building
 
