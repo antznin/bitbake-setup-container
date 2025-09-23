@@ -42,6 +42,15 @@ directly from the container:
 $ bitbake-setup init
 ```
 
+## Configuration
+
+The `./run` script can be tweaked with environment variables:
+
+| Variable       | Description                | Default                                | Supported values                                                          |
+|----------------|----------------------------|----------------------------------------|---------------------------------------------------------------------------|
+| `CONTAINERCMD` | Command use for containers | `podman`                               | `podman` or `docker`                                                      |
+| `CONTAINERURI` | URI of the container image | `ghcr.io/antznin/bitbake-setup:latest` | Any valid URI.<br>For a local container: `localhost/bitbake-setup:latest` |
+
 ## Building
 
 - Podman:
