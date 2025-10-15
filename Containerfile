@@ -59,7 +59,7 @@ RUN useradd -m builder && echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 RUN mkdir /work && chown builder:builder /work
 
-RUN git clone https://git.openembedded.org/bitbake -b master-next /bitbake \
+RUN git clone https://git.openembedded.org/bitbake -b master /bitbake \
   && chown -R builder:builder /bitbake
 
 RUN mkdir /tmp/qemu-tap-locks && chown builder:builder /tmp/qemu-tap-locks
